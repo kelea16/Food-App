@@ -18,8 +18,8 @@ app_key = '9113192b449f7d8fdc62424fb60d569b'
 #basica=('1acebed0', '28fb9e9052c61a209ca82f95f3497e07')
 
 # Make a GET request to the API with the headers
-response = requests.get('https://api.edamam.com/api/recipes/v2', auth=(app_id, app_key)).json
-
+response = requests.get('https://api.edamam.com', auth=(app_id, app_key))
+response.status_code
 #try:
 #    response.json()
 #except JSONDecodeError as e:
@@ -28,7 +28,7 @@ response = requests.get('https://api.edamam.com/api/recipes/v2', auth=(app_id, a
 
 
 if response.status_code == requests.codes.ok:
-      api_data = _session.get(response).content
+      api_data = response.content
       print(api_data)
 else:
     print(f"Request failed with status code: {response.status_code}")
